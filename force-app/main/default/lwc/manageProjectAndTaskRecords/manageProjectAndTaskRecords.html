@@ -1,0 +1,38 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-bottom_medium slds-grid slds-grid_align-spread">
+            <!-- 'All Projects' label on the left -->
+            <div class="slds-col slds-grid">
+                <!-- Icon Container using Static Resource -->
+                <div class="slds-m-right_small">
+                    <lightning-icon icon-name={projectIcon} alternative-text={altText} size='medium'></lightning-icon>
+                </div>
+                <!-- 'All Projects' Text with adjusted padding -->
+                <b><span class="slds-text-heading_medium">All {title}s</span></b>
+            </div>
+
+            <!-- 'New Project' Button on the right -->
+            <lightning-button 
+                label={buttonLabel} 
+                accesskey="n" 
+                onclick={handleNewClick} 
+                variant="neutral">
+            </lightning-button>
+        </div>
+        <!-- Lightning Data table -->
+        <div>
+            <lightning-datatable
+                data={recordData}
+                key-field="Id"
+                columns={columns}
+                hide-checkbox-column
+                show-row-number-column
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+
+        <template lwc:if={createNewProductModal}>
+            <c-create-record-modal title={title} onrefreshrecords={refreshData} onclosemodal={handleCloseModal}></c-create-record-modal>
+        </template>
+    </lightning-card>
+</template>

@@ -68,7 +68,7 @@ export default class ManageProjectAndTaskRecords extends LightningElement {
     projectData =[];
 
     // Public properties
-    @api title;
+    @api title; 
     @api altText;
     @api projectIcon;
         
@@ -107,7 +107,7 @@ export default class ManageProjectAndTaskRecords extends LightningElement {
             });    
             console.log('Before: ', JSON.stringify(mappedData));
                   
-            this.taskData = this.sortData(mappedData, 'projectName', 'asc'); // Sort by Name 
+            this.taskData = this.sortData(mappedData, 'projectName'); // Sort by Name 
             console.log('Wire projectData: ', JSON.stringify(this.taskData));
 
             console.log('After: ', JSON.stringify(mappedData));
@@ -171,9 +171,7 @@ export default class ManageProjectAndTaskRecords extends LightningElement {
         }
     }
 
-    //Sort Function -- this.sortData(mappedData, 'projectName', 'asc'); // Sort by Name 
-
-    sortData(data, fieldName, sortDirection) {
+    sortData(data, fieldName) {
         data.sort((a, b) => {
             const first = a[fieldName]; 
             const second = b[fieldName];
